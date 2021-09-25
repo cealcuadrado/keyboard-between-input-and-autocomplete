@@ -1,1 +1,18 @@
-<p>layout works!</p>
+<p>currentResult: {{currentResult}}</p>
+
+<form class="search-form">
+  <div class="input-group">
+    <input type="search" class="form-control" placeholder="Input de búsqueda" (keyup)="onSearchKeyDown($event)" />
+    <div class="input-group-append">
+      <button class="btn btn-outline-dark">
+        <i class="fas fa-search fa-fw"></i>
+      </button>
+    </div>
+  </div>
+  <div class="search-autocomplete">
+    <input *ngFor="let barResult of barResults; let i = index" class="bar-result"
+      [ngClass]="{'active' : i+1 == currentResult}" type="text"
+      [value]="barResult.title + ' (' + barResult.year + ')'" />
+  </div>
+</form>
+
